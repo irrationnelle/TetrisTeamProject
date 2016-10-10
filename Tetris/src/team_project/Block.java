@@ -5,9 +5,6 @@ import java.util.Random;
 public class Block implements BlockInterface {
 	private Tetrominoes pieceShape;	//enum으로 선언된 테트리스 피스
 	private int[][] currentBlock = new int[4][2];	//현재 클래스에서 사용할 테트리스 피스를 받아온다.
-	public int left = 0;	// 피스를 왼쪽으로 이동한 값. 중첩된 값을 right값과 합산하여 현재 x좌표를 정한다.
-	public int right = 0;	// 피스를 오른쪽으로 이동한 값. 중첩된 값을 left값과 합산하여 현재 x좌표를 정한다.
-	public int down = 0;	// 피스가 아래로 떨어지는 값. Down키와 쓰레드 메소드 호출로 값이 변한다.
 	private User user1 = new User();
 	
 	public Block() {
