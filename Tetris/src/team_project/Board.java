@@ -16,7 +16,7 @@ public class Board extends JFrame implements BoardInterface, ActionListener {
 	public static final int boardWidth = 10;
 	public static final int boardHeight = 22;
 	private Tetrimino[][] tetriminoes = new Tetrimino[boardHeight][boardWidth];
-
+//메롱
 	public Board() {
 		setFocusable(true);
 		/* 보드 초기화 */
