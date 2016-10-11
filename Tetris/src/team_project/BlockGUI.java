@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 class BlockGUI extends JPanel implements BlockGUIInterface{
 	// commit push Test
 	// commit push Test
+	// commit push Test
 	enum Tetro{
 		Z_Shape(0),
 		S_Shape(1),
