@@ -33,7 +33,7 @@ class BlockGUI extends JPanel implements BlockGUIInterface{
 		}
 	}
 	
-	int BLockSize = 10; // 블록 크기
+	int BLockSize = 10; // 블록 크기임당
 
 	// 기준점 (40, 40)
 	int x = 20;
