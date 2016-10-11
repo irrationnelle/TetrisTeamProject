@@ -10,7 +10,13 @@ public class User extends Block {
 	int curX = 0; // 블록의 X좌표
 	int curY = 0; // 블록의 Y좌표
 	Shape curPiece; // 블록의 형태
-
+    
+	public int getLeft(){
+		return curX -= -1;
+	}
+	public int getRight(){
+		return curX += +1;
+	}
 	/**
 	 * rotation 상수처리
 	 */
@@ -27,20 +33,18 @@ public class User extends Block {
 
 		switch (Keycode) {
 		case KeyEvent.VK_LEFT:
-			MoveDirection(curPiece, curX - 1, curY);
+			getLeft();
 			break;
 		case KeyEvent.VK_RIGHT:
-			MoveDirection(curPiece, curX + 1, curY);
+			getRight();
 			break;
 		case KeyEvent.VK_DOWN:
-			MoveDirection(curPiece, curX, curY + 1);
+			dropDown();
 			break;
 		case KeyEvent.VK_UP:
 			MoveDirection(((User) curPiece).rotation(), curX, curY);
 			break;
-		case KeyEvent.VK_SPACE:
-			dropDown();
-			break;
+		
 		}
 	}
 
