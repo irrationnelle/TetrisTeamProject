@@ -25,6 +25,44 @@ public class Block implements BlockInterface {
 	public int[][][] getCurrentBlock() {
 		return currentBlock;
 	}
+	
+	public int minX()
+    {
+      int m = currentBlock[0][0];
+      for (int i=0; i < 4; i++) {
+          m = Math.min(m, currentBlock[i][0]);
+      }
+      return m;
+    }
+
+
+    public int minY() 
+    {
+      int m = currentBlock[0][1];
+      for (int i=0; i < 4; i++) {
+          m = Math.min(m, currentBlock[i][1]);
+      }
+      return m;
+    }
+    
+	public int maxX()
+    {
+      int m = currentBlock[0][0];
+      for (int i=0; i < 4; i++) {
+          m = Math.max(m, currentBlock[i][0]);
+      }
+      return m;
+    }
+
+
+    public int maxY() 
+    {
+      int m = currentBlock[0][1];
+      for (int i=0; i < 4; i++) {
+          m = Math.max(m, currentBlock[i][1]);
+      }
+      return m;
+    }
 		
 	@Override
 	public void dropDown() {
