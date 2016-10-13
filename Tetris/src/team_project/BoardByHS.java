@@ -1,11 +1,26 @@
 package team_project;
 
-public class BoardByHS implements BoardInterface {
-	Block block = new Block();
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+
+public class BoardByHS extends JFrame implements BoardInterface {
+	public final int WIDTH = 10;
+	public final int HEIGHT = 22;
+	public final int SQUARE_SIZE = 25;
+	private Block block = new Block();
+	private BlockGUIbyHS b = new BlockGUIbyHS();
 	
 	public BoardByHS() {
-		// TODO Auto-generated constructor stub
 		block.setShape(Tetrominoes.NoShape);
+		
+		add(b);
+		
+		setTitle("Tetris");
+		setSize(26*12+26, 26*23+50);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 	}
 	
 	@Override
@@ -43,5 +58,8 @@ public class BoardByHS implements BoardInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	public static void main(String[] args) {
+		BoardByHS b = new BoardByHS();
+	}
 }

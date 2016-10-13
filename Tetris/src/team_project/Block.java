@@ -1,11 +1,12 @@
 package team_project;
 
+import java.awt.Color;
 import java.util.Random;
 
 public class Block implements BlockInterface {
 	private Tetrominoes pieceShape;	//enum으로 선언된 테트리스 피스
 	private int[][] currentBlock;	//현재 클래스에서 사용할 테트리스 피스를 받아온다.
-	private User user1 = new User();
+	private Color pieceColor;
 	
 	public Block() {
 		currentBlock = new int[4][2];
@@ -17,6 +18,8 @@ public class Block implements BlockInterface {
 				currentBlock[i][j] = shape.coords[i][j];
 			}
 		}
+		setPieceColor(shape.color);
+		
 		//현재 피스의 속성 정보를 가지고 있는 Tetrominoes 반환. e.g. 현재 피스의 정보는 TShape.
 		pieceShape = shape;
 	}
@@ -71,46 +74,29 @@ public class Block implements BlockInterface {
       return m;
     }
     
-    public 
-		
 	@Override
 	public void dropDown() {
 		// TODO Auto-generated method stub
-		new Thread() {
-			@Override public void run() {
-				while (true) {
-					try {
-						Thread.sleep(1000);
-						for(int i=0; i<currentBlock.length; i++) {
-							currentBlock[rotation][i][1] += 1;
-							down = currentBlock[rotation][i][1]; 
-						}
-//						repaint();
-					} catch ( InterruptedException e ) {}
-				}
-			}
-
-		}.start();
-		
-
+		for (int i = 0; i < 4; i++) {
+			currentBlock[i][1] += 1;
+		}
 	}
 
 	@Override
 	public void setMoveDirection(UserInterface directionInput) {
-		// TODO Auto-generated method stub
-		if(user1.leftInput == 37) {
-			left++;
-		} else if(user1.rightInput == 39) {
-			right++;
+		for (int i = 0; i < 4; i++) {
+			currentBlock[i][0] += 1;
 		}
 	}
 
 	@Override
 	public void setRotation(UserInterface rotationInput) {
-		for (int i = 0; i < 4; i++) {
-			int temp = currentBlock[i][0];
-			currentBlock[i][0] = -1 * currentBlock[i][1];
-			currentBlock[i][1] = temp;
+		if(pieceShape != Tetrominoes.OShape) {
+			for (int i = 0; i < 4; i++) {
+				int temp = currentBlock[i][0];
+				currentBlock[i][0] = -1 * currentBlock[i][1];
+				currentBlock[i][1] = temp;
+			}
 		}
 	}
 
@@ -118,6 +104,14 @@ public class Block implements BlockInterface {
 	public int[][] getBlock() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Color getPieceColor() {
+		return pieceColor;
+	}
+
+	public void setPieceColor(Color pieceColor) {
+		this.pieceColor = pieceColor;
 	}
 
 }
