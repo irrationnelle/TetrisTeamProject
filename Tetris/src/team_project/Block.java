@@ -4,25 +4,32 @@ import java.util.Random;
 
 public class Block implements BlockInterface {
 	private Tetrominoes pieceShape;	//enum으로 선언된 테트리스 피스
-	private int[][] currentBlock = new int[4][2];	//현재 클래스에서 사용할 테트리스 피스를 받아온다.
+	private int[][] currentBlock;	//현재 클래스에서 사용할 테트리스 피스를 받아온다.
 	private User user1 = new User();
 	
 	public Block() {
+		currentBlock = new int[4][2];
+	}
+	
+	public void setShape(Tetrominoes shape) {
+		for(int i= 0; i<4; i++) {
+			for(int j = 0; j<2; ++j) {
+				currentBlock[i][j] = shape.coords[i][j];
+			}
+		}
+		//현재 피스의 속성 정보를 가지고 있는 Tetrominoes 반환. e.g. 현재 피스의 정보는 TShape.
+		pieceShape = shape;
+	}
+	
+	//  
+	void RandomShape() {
 		Random r = new Random();
 		int x = Math.abs(r.nextInt()) % 6 + 1;	// enum으로 선언된 테트리스 피스 중 하나를 무작위 선택
 		Tetrominoes[] values = Tetrominoes.values();
 		setShape(values[x]);
 	}
 	
-	public void setShape(Tetrominoes shape) {
-		for(int i= 0; i<4; i++) {
-			for(int j = 0; j<2; ++j) {
-				currentBlock[rotation][i][j] = shape.blocks[rotation][i][j];
-			}
-		}
-	}
-	
-	public int[][][] getCurrentBlock() {
+	public int[][] getCurrentBlock() {
 		return currentBlock;
 	}
 	
@@ -63,6 +70,8 @@ public class Block implements BlockInterface {
       }
       return m;
     }
+    
+    public 
 		
 	@Override
 	public void dropDown() {
@@ -98,11 +107,10 @@ public class Block implements BlockInterface {
 
 	@Override
 	public void setRotation(UserInterface rotationInput) {
-		// TODO Auto-generated method stub
-		if(rotation == 3) {
-			rotation = 0;
-		} else {
-			rotation++;
+		for (int i = 0; i < 4; i++) {
+			int temp = currentBlock[i][0];
+			currentBlock[i][0] = -1 * currentBlock[i][1];
+			currentBlock[i][1] = temp;
 		}
 	}
 
