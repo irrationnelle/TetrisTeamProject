@@ -38,10 +38,9 @@ public class BlockGUIbyHS extends JPanel implements KeyListener{
 			g.fillRect(lineX, lineY, 25, 25);
 			
 			// À±°û¼± ±×¸®±â
-			g.setColor(Color.BLACK);
+			g.setColor(Color.WHITE);
 			g.drawLine(lineX + 25, lineY, lineX + 25, lineY + 25);
 			g.drawLine(lineX, lineY + 25, lineX + 25, lineY + 25);
-			g.setColor(Color.WHITE);
 			g.drawLine(lineX, lineY, lineX + 25, lineY);
 			g.drawLine(lineX, lineY, lineX, lineY + 25);
 		}
@@ -74,7 +73,8 @@ public class BlockGUIbyHS extends JPanel implements KeyListener{
 			block.setMoveDirection(u);
 			break;
 		case KeyEvent.VK_UP:
-			block.setRotation(u);
+//			block.setRotation(u);
+			block = block.rotation();
 			break;
 		case KeyEvent.VK_DOWN:
 			block.dropDown();

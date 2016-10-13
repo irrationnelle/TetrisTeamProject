@@ -99,6 +99,21 @@ public class Block implements BlockInterface {
 			}
 		}
 	}
+	
+	public Block rotation() {
+		Block block = new Block();
+		block.pieceShape = pieceShape;
+		if(pieceShape != Tetrominoes.OShape) {
+			for (int i = 0; i < 4; i++) {
+				int temp = this.currentBlock[i][0];
+				block.currentBlock[i][0] = -1 * this.currentBlock[i][1];
+				block.currentBlock[i][1] = temp;
+			}
+		} else if(pieceShape == Tetrominoes.OShape) {
+			return this;
+		}
+		return block;
+	}
 
 	@Override
 	public int[][] getBlock() {
