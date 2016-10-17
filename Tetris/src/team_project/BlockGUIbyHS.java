@@ -73,8 +73,8 @@ public class BlockGUIbyHS extends JPanel implements KeyListener{
 			block.setMoveDirection(u);
 			break;
 		case KeyEvent.VK_UP:
-//			block.setRotation(u);
-			block = block.rotation();
+			block.setRotation(u);
+//			block = block.rotation();
 			break;
 		case KeyEvent.VK_DOWN:
 			block.dropDown();
