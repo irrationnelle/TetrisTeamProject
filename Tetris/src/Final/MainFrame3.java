@@ -25,33 +25,34 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-public class MainFrame3 extends JFrame{
+public class MainFrame3 extends JFrame {
 
 	private JTextField idText;
 	private JTextField userField;
 	private JTextField scoreField;
 	private JTextField speedField;
-    private JButton idButton;
+	private JButton idButton;
 	private BufferedImage img = null;
 	private Board board;
 	private String userName;
 	private ScorePanel scorePanel;
 
 	private UserInput idInput = null;
+
 	// 프레임 생성 및 초기화
 	public MainFrame3() {
-		
+
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tk.getScreenSize();
 		int x = screenSize.width / 6 / 1 - this.getWidth() / 2;
 		int y = screenSize.height / 300 / 1 - this.getHeight() / 2;
 		setLocation(x, y);
-		
 
 		add(new MyPanel());
 
@@ -60,12 +61,12 @@ public class MainFrame3 extends JFrame{
 		JPanel panelMain = new JPanel();
 		JPanel panelBar = new JPanel();
 		JPanel panelUnclear = new JPanel();
-//		JPanel panelGame = new JPanel();
-		
+		// JPanel panelGame = new JPanel();
+
 		JPanel panelNext = new JPanel();
 		JPanel panelItem = new JPanel();
 
-//		// Bar패널 설정
+		// // Bar패널 설정
 		panelBar.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panelBar.setBackground(Color.darkGray);
 		panelBar.setSize(800, 40);
@@ -80,9 +81,9 @@ public class MainFrame3 extends JFrame{
 			}
 		});
 		startBtn.setFocusable(false);
-		
+
 		panelBar.add(startBtn);
-		
+
 		JButton scoreBtn = new JButton("Score");
 		scoreBtn.setBackground(Color.WHITE);
 		scoreBtn.addActionListener(new ActionListener() {
@@ -93,11 +94,11 @@ public class MainFrame3 extends JFrame{
 		});
 		panelBar.add(scoreBtn);
 		scoreBtn.setFocusable(false);
-		
+
 		JButton optionBtn = new JButton("Option");
 		optionBtn.setBackground(Color.WHITE);
 		optionBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Option();
@@ -105,96 +106,81 @@ public class MainFrame3 extends JFrame{
 		});
 		panelBar.add(optionBtn);
 		optionBtn.setFocusable(false);
-		
-		
-		
+
 		// Unclear패널 설정
 		panelUnclear.setLayout(null);
 		panelUnclear.setBounds(30, 70, 500, 100);
-		panelUnclear.setSize(720, 800);
+		panelUnclear.setSize(600, 800);
 		panelUnclear.setBackground(new Color(0, 0, 0, 50));
 		panelUnclear.setFocusable(false);
 		// -------------------Unclear페널에 붙을 각종 레이블--------------------------//
 		// Player 레이블
 		JLabel lable2 = new JLabel("PLAYER");
-		lable2.setBounds(30, 200, 50, 10);
+		lable2.setBounds(50, 30, 50, 10);
 		lable2.setForeground(Color.white);
 		lable2.setFocusable(false);
 		panelUnclear.add(lable2);
-		// Mode 레이블
+		// Speed 레이블
 		JLabel lable3 = new JLabel("SPEED");
-		lable3.setBounds(35, 300, 50, 10);
+		lable3.setBounds(55, 130, 50, 10);
 		lable3.setForeground(Color.white);
 		lable3.setFocusable(false);
 		panelUnclear.add(lable3);
-		// Speed 레이블
+		// Mode 레이블
 		JLabel lable4 = new JLabel("MODE");
-		lable4.setBounds(30, 400, 50, 10);
+		lable4.setBounds(55, 330, 50, 10);
 		lable4.setForeground(Color.white);
 		lable4.setFocusable(false);
 		panelUnclear.add(lable4);
 		// Score 레이블
 		JLabel lable5 = new JLabel("SCORE");
-		lable5.setBounds(640, 50, 50, 10);
+		lable5.setBounds(50, 230, 50, 10);
 		lable5.setForeground(Color.white);
 		lable5.setFocusable(false);
 		panelUnclear.add(lable5);
 
-		// Level 레이블
-		JLabel lable7 = new JLabel("LEVEL");
-		lable7.setBounds(105, 750, 100, 10);
-		lable7.setForeground(Color.white);
-		lable7.setFocusable(false);
-		panelUnclear.add(lable7);
-
 		// ------------------Unclear패널에 붙을 각종 텍스트-----------------------------//
 		// Speed 텍스트
 		speedField = new JTextField();
-		speedField.setBounds(17, 330, 70, 40);
+		speedField.setBounds(40, 150, 70, 40);
 		speedField.setBackground(Color.white);
 		panelUnclear.add(speedField);
 		speedField.setText("400");
 		speedField.setFocusable(false);
 		// Mode 텍스트
 		JTextField Field2 = new JTextField();
-		Field2.setBounds(17, 430, 70, 40);
+		Field2.setBounds(40, 350, 70, 40);
 		Field2.setBackground(Color.white);
 		panelUnclear.add(Field2);
 		Field2.setFocusable(false);
 		// Player 텍스트
 		userField = new JTextField();
-		userField.setBounds(17, 230, 70, 40);
+		userField.setBounds(40, 50, 70, 40);
 		userField.setBackground(Color.white);
 		panelUnclear.add(userField);
 		userField.setFocusable(false);
 
 		// Score 텍스트
 		scoreField = new JTextField("0");
-		scoreField.setBounds(625, 80, 70, 40);
+		scoreField.setBounds(40, 250, 70, 40);
 		scoreField.setBackground(Color.white);
 		panelUnclear.add(scoreField);
 		scoreField.setFocusable(false);
-		// Level 텍스트
-		JTextField Field5 = new JTextField();
-		Field5.setBounds(160, 750, 450, 10);
-		Field5.setBackground(Color.white);
-		panelUnclear.add(Field5);
-		Field5.setFocusable(false);
 
 		// --------------------------------------------------------------------------//
-//		new UserInput();
-		
+		// new UserInput();
+
 		// Game패널 설정
 		board = new Board(this);
 		board.setLayout(null);
-		board.setBounds(135, 90, 400, 50);
-		board.setSize(500, 700);
+		board.setBounds(200, 110, 400, 50);
+		board.setSize(350, 700);
 		board.setBackground(Color.gray);
 		board.setFocusable(true);
+
 		panelMain.add(board);
 		panelMain.setFocusable(false);
 
-		
 		// 각 패널들을 전체 Main패널에 붙이기
 		add(panelBar);
 		add(board);
@@ -203,42 +189,40 @@ public class MainFrame3 extends JFrame{
 		add(panelMain);
 		add(p);
 
-
 		panelBar.setFocusable(false);
 		panelNext.setFocusable(false);
 		panelUnclear.setFocusable(false);
 		p.setFocusable(false);
-//		board.start();
+		// board.start();
 		board.setFocusable(true);
-		
-		
+
 		setTitle("Tetris");
-		setSize(800, 950);
+		setSize(650, 950);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setFocusable(true);
 		setVisible(true);
-		
+
 		idInput = new UserInput();
-//		idInput.setVisible(true);
+		// idInput.setVisible(true);
 	}
-	
+
 	public JTextField getScoreBoard() {
 		return scoreField;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
-	
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	public JTextField getUserField() {
 		return userField;
 	}
-	
+
 	public JTextField getSpeedField() {
 		return speedField;
 	}
@@ -273,7 +257,7 @@ public class MainFrame3 extends JFrame{
 			int x = screenSize.width / 3 / 1 - this.getWidth() / 2;
 			int y = screenSize.height / 3 / 1 - this.getHeight() / 2;
 
-//			add(new MyPanel());
+			// add(new MyPanel());
 
 			MyPanel p = new MyPanel();
 			JPanel panelMain1 = new JPanel();
@@ -295,10 +279,10 @@ public class MainFrame3 extends JFrame{
 			idText = new JTextField();
 			idText.setBounds(40, 10, 130, 20);
 			idText.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-//					userName = idText.getText();
+					// userName = idText.getText();
 					setUserName(idText.getText());
 					userField.setText(userName);
 					userField.setFocusable(false);
@@ -308,7 +292,7 @@ public class MainFrame3 extends JFrame{
 					board.start();
 					board.setFocusable(true);
 					board.requestFocus();
-					
+
 				}
 			});
 			panelUnclear1.add(idText);
@@ -317,7 +301,7 @@ public class MainFrame3 extends JFrame{
 			idButton.setFocusable(false);
 			idButton.setBounds(180, 10, 60, 20);
 			idButton.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					userName = idText.getText();
@@ -333,14 +317,14 @@ public class MainFrame3 extends JFrame{
 			panelUnclear1.add(idButton);
 			panelUnclear1.setFocusable(false);
 
-			add(panelUnclear1); 
-//			add(panelMain);
+			add(panelUnclear1);
+			// add(panelMain);
 			add(p);
-			
+
 			setTitle("Tetris");
 			setLocation(x, y);
 			setSize(300, 150);
-			
+
 			setResizable(false);
 			setModal(true);
 			setVisible(true);
@@ -364,23 +348,23 @@ public class MainFrame3 extends JFrame{
 		}
 
 	}
-	
+
 	// Score 보여주는 프레임
 	public class ScoreFrame extends JFrame {
-		
+
 		ScorePanel scorePanel;
-		
+
 		public ScoreFrame() {
 			scorePanel = new ScorePanel();
 			JButton resetBtn = new JButton("Reset");
-			
+
 			Toolkit tk = Toolkit.getDefaultToolkit();
 			Dimension screenSize = tk.getScreenSize();
 			int x = screenSize.width / 3 / 1 - this.getWidth() / 2;
 			int y = screenSize.height / 3 / 1 - this.getHeight() / 2;
-			
+
 			resetBtn.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
@@ -388,74 +372,72 @@ public class MainFrame3 extends JFrame{
 					dispose();
 				}
 			});
-			
+
 			add(scorePanel);
 			add(resetBtn, BorderLayout.SOUTH);
-			
+
 			setTitle("Score Board");
 			setLocation(x, y);
 			setSize(500, 500);
-			
-//			setResizable(false);
+
+			// setResizable(false);
 			setVisible(true);
 		}
-		
+
 		public class ScorePanel extends JPanel {
 			String[] Column = { "순위", "사용자", "점수" };
 			Object[][] data;
 			ScoreDAO d = new ScoreDAO(); // 점수 DB DAO
-			
+
 			public ScorePanel() {
 				Toolkit tk = Toolkit.getDefaultToolkit();
 				Dimension screenSize = tk.getScreenSize();
 				int x = screenSize.width / 3 / 1 - this.getWidth() / 2;
 				int y = screenSize.height / 3 / 1 - this.getHeight() / 2;
-				
-				
+
 				d.createConnection();
 				List<ScoreVO> l = d.selectScoreList();
 				data = new Object[l.size()][];
-				
+
 				for (int i = 0; i < d.selectScoreList().size(); i++) {
 					data[i] = new Object[3];
-					data[i][0] = new Integer(i+1);
+					data[i][0] = new Integer(i + 1);
 					data[i][1] = new String(l.get(i).getName());
 					data[i][2] = new Integer(l.get(i).getScore());
 				} // 테이블에 들어갈 데이터 입력
-				
-				
+
 				DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 				dtcr.setHorizontalAlignment(SwingConstants.CENTER);
 				// 가운데 정렬용 DefaultTableCellRenderer
-				
+
 				JTable b = new JTable(data, Column);
-				
-				for(int i = 0 ; i < b.getColumnCount() ; i++)
+
+				for (int i = 0; i < b.getColumnCount(); i++)
 					b.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 				// 각 column들을 가운데 정렬함
-				
+
 				b.setEnabled(false);
 				// 테이블 수정금지
 				b.getTableHeader().setReorderingAllowed(false);
 				// 테이블 이동 불가
 				b.getTableHeader().setResizingAllowed(false);
 				// 테이블 크기 조절 불가.
-				JScrollPane p = new JScrollPane(b); 
+				JScrollPane p = new JScrollPane(b);
 				add(p); // JScrollPane으로 테이블에 스크롤을 넣은후에 패널에 추가
-				
+
 				System.out.println("scorePanel Construct");
-				
+
 				setTitle("Score Board");
 				setLocation(x, y);
 				setSize(300, 150);
-				
+
 				setResizable(false);
 				setVisible(true);
 			}
-			
+
 		}
 	}
-	
+
 	public class Option extends JFrame {
 		String a1 = "";
 
@@ -601,15 +583,11 @@ public class MainFrame3 extends JFrame{
 
 	}
 
-	
-
 	public static void main(String[] args) {
 		MainFrame3 main = new MainFrame3();
 		main.setLocationRelativeTo(null);
-        main.setVisible(true);
+		main.setVisible(true);
 
 	}
 
-	
-	
 }
