@@ -13,7 +13,7 @@ import Final.ScoreVO;
 public class ScoreDAO {
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
-	private final String DB_URL = "jdbc:mysql://127.0.0.1:3306/tetris";
+	private final String DB_URL = "jdbc:mysql://70.12.109.105:3306/tetris";
 	private final String DB_ID = "root";
 	private final String DB_PW = "sds902";
 	
