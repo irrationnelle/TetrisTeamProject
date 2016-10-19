@@ -150,38 +150,32 @@ public class ScoreDAO {
 	public List<ScoreVO> selectScoreList() {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<ScoreVO> scoreList = new ArrayList<>();
-		
+		List<ScoreVO> ScoreList = new ArrayList<>();
 		try {
-			// 3. SQL 명령어 작성
-			String sql = "SELECT user_id, name, score "
-					   + " FROM scoreboard WHERE book_id = ?";
-			// 4. PreparedStatement 객체 생성
+			String sql = "SELECT name, score FROM scoreboard ORDER BY score DESC";
+			// 정렬은 SQL문을 통해 DB에서 미리 정렬하여 가지고 온다.
 			pstmt = con.prepareStatement(sql);
-			
-			// 5. 작성한 SQL 문장 데이터베이스에 보내서 실행시키기.
+
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				ScoreVO resultScore = new ScoreVO();
-				resultScore.setUserID(rs.getInt(1));
-				resultScore.setName(rs.getString(2));
-				resultScore.setScore(rs.getInt(3));
-				
-				scoreList.add(resultScore);
+				resultScore.setName(rs.getString(1));
+				resultScore.setScore(rs.getInt(2));
+				ScoreList.add(resultScore);
 			}
 		} catch (SQLException e) {
-			System.out.println("DAO Select error");
+			System.out.println("Dao update 에러");
 			e.printStackTrace();
 		} finally {
-			if(rs != null) {
+			if (rs != null) {
 				try {
 					rs.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
-			if(pstmt != null) {
+			if (pstmt != null) {
 				try {
 					pstmt.close();
 				} catch (SQLException e) {
@@ -189,7 +183,9 @@ public class ScoreDAO {
 				}
 			}
 		}
-		return scoreList;
+		return ScoreList;
 	}
+	
+	
 	
 }
