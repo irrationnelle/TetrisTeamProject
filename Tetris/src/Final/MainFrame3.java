@@ -41,7 +41,6 @@ public class MainFrame3 extends JFrame {
 	private BufferedImage img = null;
 	private Board board;
 	private String userName;
-	private ScorePanel scorePanel;
 
 	private UserInput idInput = null;
 
