@@ -40,7 +40,6 @@ public class MainFrame3 extends JFrame{
 	private BufferedImage img = null;
 	private Board board;
 	private String userName;
-	private ScorePanel scorePanel;
 
 	private UserInput idInput = null;
 	// 프레임 생성 및 초기화
@@ -187,7 +186,7 @@ public class MainFrame3 extends JFrame{
 		// Game패널 설정
 		board = new Board(this);
 		board.setLayout(null);
-		board.setBounds(135, 90, 400, 50);
+		board.setBounds(135, 90, 200, 50);
 		board.setSize(500, 700);
 		board.setBackground(Color.gray);
 		board.setFocusable(true);
