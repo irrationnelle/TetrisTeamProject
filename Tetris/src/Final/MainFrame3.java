@@ -328,6 +328,7 @@ public class MainFrame3 extends JFrame{
 					scoreField.setFocusable(false);
 					board.start();
 					board.setFocusable(true);
+					board.requestFocus();
 				}
 			});
 			panelUnclear1.add(idButton);
